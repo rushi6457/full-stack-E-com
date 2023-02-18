@@ -53,7 +53,7 @@ const validateUser = async(data) =>{
    
     try {
         let user = await findUser({email})
-        
+    
         if(user){
             if(await argon.verify(user.password,password)){
                 return user
@@ -73,22 +73,24 @@ const Login = async(req,res) =>{
 
     let {email,password} = req.body;
     let user = await validateUser({email,password});
+        
     let userId = user._id;
     let role = user.role
       
-          if(user && user.email.includes("@masai.com")){
-                if(user){
+    if(user){
+      
+         if(user.email.includes("@masai.com")){
                   
-                     let token = jwt.sign(
+             let token = jwt.sign(
 
-            {email:user.email,password:user.password,id:user._id},
+            {email:user.email,password:user.password,id:userId,role:role},
             process.env.SECRET_KEY,
             {
                 expiresIn:'2days'
             }
         );
         let refreshToken = jwt.sign(
-            {email:user.email,password:user.password,id:user._id},
+            {email:user.email,password:user.password,id:userId,role:role},
             process.env.REFRESH_KEY,
             {
                 expiresIn:'28days'
@@ -96,25 +98,25 @@ const Login = async(req,res) =>{
         );
         res.status(200).send({message:"Admin login successful",status:true,token,refreshToken,userId:userId,role:role})
                 }
-                else{
+        else{
          let token = jwt.sign(
-            {email:user.email,password:user.password,id:user._id},
+            {email:user.email,password:user.password,id:userId,role:role},
             process.env.SECRET_KEY,
             {
                 expiresIn:'2days'
             }
         );
         let refreshToken = jwt.sign(
-            {email:user.email,password:user.password,id:user._id},
+            {email:user.email,password:user.password,id:userId,role:role},
             process.env.REFRESH_KEY,
             {
                 expiresIn:'28days'
             }
         );
+    
         res.status(200).send({message:"User login successful",status:true,token,refreshToken,userId:userId,role:role})
         }        
     }   
-     
 }
 
 const GetAllProfiles = async(req,res) =>{
@@ -125,6 +127,8 @@ const GetAllProfiles = async(req,res) =>{
     }
     res.send(box).status(200)
 }
+
+
 const GetSingleUser = async(req,res)=>{
     const {id} = req.params;
     const user = await UserModel.findById(id)

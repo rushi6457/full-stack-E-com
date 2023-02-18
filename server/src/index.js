@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 const userRoute = require("./routes/userRoutes")
 const productRoute = require("./routes/productRoute")
+const cartRoute = require("./routes/cartRoute")
 
 app.use(express.urlencoded({ extended:true}))
 app.use(cors({origin:true,credentials:true}))
@@ -19,6 +20,8 @@ app.patch("/updateproduct/:id",productRoute.UpdateProduct)
 app.delete("/deleteproduct/:id",productRoute.DeleteProduct)
 app.post("/newproduct",productRoute.AddProduct)
 app.get("/products",productRoute.GetAllProducts)
+
+app.post('/addtocart',cartRoute.AddToCart)
 
 app.get("/",(req,res) =>res.send("HELLO"))
 

@@ -12,13 +12,14 @@ const GetAllProducts = async(req,res) =>{
 }
 // Add new Product
 const AddProduct = async(req,res) =>{
-    const {title, description,price,image} = req.body;
+    const {title, description,price,image,category} = req.body;
     try {
         let newProduct = new ProductModel({
             title,
             description,
             price,
-            image
+            image,
+            category
         })
         await newProduct.save();
         res.send({status:true,product:newProduct}).status(200)

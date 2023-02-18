@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
             type:String,
             enum:["admin","user"],
             default:'user'
+        },
+        cartItems:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'cart'
         }
         
 },{
