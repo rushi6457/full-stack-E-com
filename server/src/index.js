@@ -20,6 +20,7 @@ app.patch("/updateproduct/:id",productRoute.UpdateProduct)
 app.delete("/deleteproduct/:id",productRoute.DeleteProduct)
 app.post("/newproduct",productRoute.AddProduct)
 app.get("/products",productRoute.GetAllProducts)
+app.get("/product/:id",productRoute.GetSingleProduct)
 
 app.post('/addtocart',cartRoute.AddToCart)
 

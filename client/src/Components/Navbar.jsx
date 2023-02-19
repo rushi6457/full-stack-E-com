@@ -2,18 +2,30 @@ import { Box, Button, Flex, HStack, Image, ListItem, UnorderedList } from '@chak
 import React from 'react';
 import {AiOutlineShoppingCart} from "react-icons/ai";
 import styles from "../Styles/Navbar.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/auth/actions';
 
 const Navbar = () => {
+       const store = useSelector(store=>store.login)
+ 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const handleLogout = () =>{
+       if(store.isAuth){
+        dispatch(logout())
+       }
+       else{
+        navigate("/login")
+       }
+    }
     return (
         <Flex
             justifyContent={'space-between'}
             align={'center'}
             border={'1px solid'}
             width={'100%'}
-            // bg={'black'}
-            // color='white'
             className={styles.navbar}
         >
             <Link to={'/'}>
@@ -43,11 +55,12 @@ const Navbar = () => {
                     </Flex>
                     <Link to='/login'>
                         <Button 
+                            onClick={handleLogout}
                             fontSize={'1.3rem'}
                             fontWeight={'200'}
                             variant={'outline'} 
                             colorScheme='red'>
-                            Login</Button>
+                            {store.isAuth ? "Logout" : "Login"}</Button>
                     </Link>
                     <Link to={'/signup'}>
                         <Button 

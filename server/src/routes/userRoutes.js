@@ -59,11 +59,11 @@ const validateUser = async(data) =>{
                 return user
             }
             else{
-                return ("Password doesn't match")
+                return false
             }
         }
         else{
-            return ("User not exist, Signup to proceed")
+            return false
         }
     } catch (error) {
         return error
@@ -76,47 +76,90 @@ const Login = async(req,res) =>{
         
     let userId = user._id;
     let role = user.role
-      
-    if(user){
-      
-         if(user.email.includes("@masai.com")){
-                  
-             let token = jwt.sign(
 
-            {email:user.email,password:user.password,id:userId,role:role},
-            process.env.SECRET_KEY,
-            {
-                expiresIn:'2days'
-            }
-        );
-        let refreshToken = jwt.sign(
-            {email:user.email,password:user.password,id:userId,role:role},
-            process.env.REFRESH_KEY,
-            {
-                expiresIn:'28days'
-            }
-        );
-        res.status(200).send({message:"Admin login successful",status:true,token,refreshToken,userId:userId,role:role})
-                }
-        else{
-         let token = jwt.sign(
-            {email:user.email,password:user.password,id:userId,role:role},
-            process.env.SECRET_KEY,
-            {
-                expiresIn:'2days'
-            }
-        );
-        let refreshToken = jwt.sign(
-            {email:user.email,password:user.password,id:userId,role:role},
-            process.env.REFRESH_KEY,
-            {
-                expiresIn:'28days'
-            }
-        );
+      if(user && email.includes("@masai.com")){
+         if (user) {
+           
+    let token = jwt.sign(
+      { email: user.email,password:user.password,id:userId,role:role},
+      process.env.TOKEN_SECRET,
+      {
+        expiresIn: "2 days",
+      }
+    );
+
+    let refreshToken = jwt.sign(
+      { email:user.email,password:user.password,id:userId,role:role},
+        process.env.REFRESH_TOKEN,
+      { expiresIn: "7 days" }
+    );
+     res.status(200).send({ message: "Admin Login successfull", token, refreshToken,role:"Admin" ,status:true,userId:userId,role:role});
+  } else {
+    return res.send({ status: false, messege: "something went wrong" });
+  }
+      }
+      else{
+
+           if (user) {
+    let token = jwt.sign(
+      { email:user.email,password:user.password,id:userId,role:role},
+      process.env.SECRET_KEY,
+      {
+        expiresIn: "2 days",
+      }
+    );
+
+    let refreshToken = jwt.sign(
+      {email:user.email,password:user.password,id:userId,role:role},
+        process.env.REFRESH_KEY,
+      { expiresIn: "7 days" }
+    );
+     res.status(200).send({ "Message": "User Login successfull" , token, refreshToken ,role:"User",status:true,userId:userId,role:role });
+  } else {
+    return res.send({ status: false, messege: "something went wrong" });
+  }
+
+      }
+      
+    // if(user && user.email.includes("@masai.com")){
+    //     if(user){
+         
+    //          let token = jwt.sign(
+
+    //         {email:user.email,password:user.password,id:userId,role:role},
+    //         process.env.SECRET_KEY,
+    //         {
+    //             expiresIn:'2days'
+    //         }
+    //     );
+    //     let refreshToken = jwt.sign(
+    //         {email:user.email,password:user.password,id:userId,role:role},
+    //         process.env.REFRESH_KEY,
+    //         {
+    //             expiresIn:'28days'
+    //         }
+    //     );
+    //     res.status(200).send({message:"Admin login successful",status:true,token,refreshToken,userId:userId,role:role})
+    //         }
+    //     else{
+    //      let token = jwt.sign(
+    //         {email:user.email,password:user.password,id:userId,role:role},
+    //         process.env.SECRET_KEY,
+    //         {
+    //             expiresIn:'2days'
+    //         }
+    //     );
+    //     let refreshToken = jwt.sign(
+    //         {email:user.email,password:user.password,id:userId,role:role},
+    //         process.env.REFRESH_KEY,
+    //         {
+    //             expiresIn:'28days'
+    //         }
+    //     );
     
-        res.status(200).send({message:"User login successful",status:true,token,refreshToken,userId:userId,role:role})
-        }        
-    }   
+    //     res.status(200).send({message:"User login successful",status:true,token,refreshToken,userId:userId,role:role})
+    //     }        
+    // }   
 }
 
 const GetAllProfiles = async(req,res) =>{

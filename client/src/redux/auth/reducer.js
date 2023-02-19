@@ -27,7 +27,7 @@ export const loginReducer = (state=initStateLogin,{type,payload}) =>{
         }
     }
     case LOGIN_SUCCESS:{
-        localStorage.setItem('token',JSON.stringify(token))
+        localStorage.setItem('token',JSON.stringify(payload))
         return {
             ...state,
             isLoading:false,

@@ -1,16 +1,19 @@
 import axios from "axios"
-import { LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./types"
+import { LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./types"
 
 export const login = (creds) => async(dispatch) =>{
 
     dispatch({type:LOGIN_REQUEST})
     try {
         let res = await axios.post(`http://localhost:5000/login`,creds)
+        console.log(res.data);
         dispatch({type:LOGIN_SUCCESS,payload:res.data})
     } catch (error) {
         dispatch({type:LOGIN_FAIL})
     }
 }
+
+export const logout = () => ({type:LOGOUT})
 export const signup = (creds) => async(dispatch) =>{
 
     dispatch({type:SIGNUP_REQUEST})

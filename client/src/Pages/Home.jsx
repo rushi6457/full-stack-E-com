@@ -1,24 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import  { Autoplay, Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css';
 import '../Styles/styles.css';
-import { Grid, GridItem, HStack, Heading, Image } from '@chakra-ui/react';
-
+import { Box, Button, Grid, GridItem, HStack, Heading, Image, Text } from '@chakra-ui/react';
+import axios from 'axios';
+import styles from "../Styles/Home.module.css";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-
-     const progressCircle = useRef(null);
+  const [data,setData] = useState([])
+  const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty('--progress', 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
+
+  const getData = async() =>{
+      let res = await axios.get(`http://localhost:5000/products`)
+    return res.data
+  }
+
+  useEffect(()=>{
+    getData()
+    .then((res)=>setData(res.products))
+  },[])
+  console.log(data);
     return (
     <div>
-             <Swiper
+        <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -51,7 +64,6 @@ const Home = () => {
             width='95%'
             margin='auto'
             templateColumns={'repeat(4,1fr)'}
-            border={'1px solid'} 
             gap={'30'}>
             <GridItem border='1px solid' >
                 <Image height='100%' w='100%' src='https://imgs.search.brave.com/_iQhlo2ZYGJ26NLVLDbsuod3moVxfHLvMUo9KDAXeFU/rs:fit:500:500:1/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9hc3IvOTVl/MzY1MmItYmY3YS00/NTI5LWFjNjUtOTJh/YjFhYTAzMWVlXzEu/OGIxMTNmNTc2M2U4/MzU1NWFhMTZhMzk3/OWU3NTBhMTguanBl/Zz9vZG5XaWR0aD02/MTImb2RuSGVpZ2h0/PTYxMiZvZG5CZz1m/ZmZmZmY'></Image>
@@ -65,6 +77,36 @@ const Home = () => {
             <GridItem border='1px solid' >
                 <Image height='100%' w='100%' src='https://imgs.search.brave.com/DgaIatzCme3mzENZ39vxV65ioe8LmZ7lEUrGKId1TDY/rs:fit:1200:800:1/g:ce/aHR0cHM6Ly9iZ3Iu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDE1LzA5L2Jnci1s/ZW5vdm8teW9nYS0z/LmpwZz9xdWFsaXR5/PTcwJnN0cmlwPWFs/bA'></Image>
             </GridItem>
+        </Grid>
+        
+        <Heading textAlign={'justify'} padding={'1.5rem'}>Products</Heading>
+        <Grid
+            width='95%'
+            margin='auto'
+            templateColumns={'repeat(4,1fr)'}
+            gap={'30'}
+            
+        >
+          {
+            data.map((el)=>{
+              return (
+                <GridItem
+                  className={styles.container}
+                  border={'1px solid'}
+                >
+                  <Image className={styles.image} src={el.image}h='100%' w='100%'></Image>
+                  <Heading textAlign={'justify'} size='md'>{el.title}</Heading>
+                  <Text textAlign={'justify'}>{el.description}</Text>
+                  <Text textAlign={'justify'}>{`$ ${el.price}`}</Text>
+                  <Link to={`/cart/${el._id}`}>
+                    <Box className={styles.overlay}>
+                      <Button colorScheme='pink' className={styles.text}>View detail</Button>
+                    </Box>
+                  </Link>
+              </GridItem>
+              )
+            })
+          }
         </Grid>
     </div>
     );

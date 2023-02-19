@@ -53,11 +53,23 @@ const UpdateProduct = async(req,res) =>{
         res.send({message:error.message,status:false})
     }
 }
+//Get single product 
+const GetSingleProduct = async(req,res) =>{
+
+     try {
+        let singleProduct = await ProductModel.findById(req.params.id)
+        res.status(200).send({status:true,product:singleProduct})
+    } catch (error) {
+        res.send({status:false,message:error})
+    }
+    
+}
 
 
 module.exports = {
     AddProduct,
     DeleteProduct,
     GetAllProducts,
-    UpdateProduct
+    UpdateProduct,
+    GetSingleProduct
 }
