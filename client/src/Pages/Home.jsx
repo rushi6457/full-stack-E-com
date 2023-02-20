@@ -91,6 +91,7 @@ const Home = () => {
             data.map((el)=>{
               return (
                 <GridItem
+                key = {el.id}
                   className={styles.container}
                   border={'1px solid'}
                 >

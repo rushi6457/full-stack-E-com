@@ -6,6 +6,7 @@ require('dotenv').config();
 const userRoute = require("./routes/userRoutes")
 const productRoute = require("./routes/productRoute")
 const cartRoute = require("./routes/cartRoute")
+const paymentRoute = require("./routes/paymentRoute")
 
 app.use(express.urlencoded({ extended:true}))
 app.use(cors({origin:true,credentials:true}))
@@ -22,7 +23,11 @@ app.post("/newproduct",productRoute.AddProduct)
 app.get("/products",productRoute.GetAllProducts)
 app.get("/product/:id",productRoute.GetSingleProduct)
 
+app.get("/deleteproduct/:id",cartRoute.DeleteCart)
 app.post('/addtocart',cartRoute.AddToCart)
+app.get("/getcart",cartRoute.GetCart)
+
+app.post("/payment",paymentRoute.Payment)
 
 app.get("/",(req,res) =>res.send("HELLO"))
 
