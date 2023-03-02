@@ -41,11 +41,14 @@ const Login = () => {
        navigate("/cart")
     }
 
-    // useEffect(()=>{
-    //     if(store.token.Message === "User Login successfull"){
-    //           navigate("/cart")
-    //     }    
-    // },[store.token.Message])
+useEffect(()=>{
+    if(store.isAuth === true && store.token.role === "User"){
+        navigate("/cart")
+    }
+    else if(store.isAuth === true && store.token.role === "Admin"){
+        navigate("/admin")
+    }
+},[store.isAuth])
    
     if(store.isLoading){
         return (

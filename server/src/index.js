@@ -26,6 +26,8 @@ app.get("/product/:id",productRoute.GetSingleProduct)
 app.get("/deleteproduct/:id",cartRoute.DeleteCart)
 app.post('/addtocart',cartRoute.AddToCart)
 app.get("/getcart",cartRoute.GetCart)
+// app.get("/cartitems",cartRoute.GetCartItems)
+app.get("/getitems",cartRoute.getCartItems)
 
 app.post("/payment",paymentRoute.Payment)
 

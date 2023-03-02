@@ -5,19 +5,24 @@ import React, { useEffect, useState } from 'react';
 const Cart = () => {
 
     const [data,setData] = useState([])
-
+    const [id,setId] = useState({})
+    let ids = []
     const getData = async() =>{
         let res = await axios.get(`http://localhost:5000/getcart`)
        return res.data
     }
+    const cartData = async() =>{
+    getData()
+     .then((res)=>res.cart.map((el)=>ids.push(el.productId)))
+    }
+    console.log(ids);
    useEffect(()=>{
-     getData()
-     .then((res)=>setData(res.cart))
+   cartData()
    },[])
-   console.log(data);
+ 
     return (
         <div>
-           <Grid>
+           {/* <Grid>
             {
                 data.map((el)=>{
                     return (
@@ -27,7 +32,7 @@ const Cart = () => {
                     )
                 })
             }
-           </Grid>
+           </Grid> */}
         </div>
     );
 }

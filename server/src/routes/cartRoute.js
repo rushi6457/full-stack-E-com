@@ -14,7 +14,7 @@ const AddToCart = async(req,res)=>{
                 productId: productId,
                 userId: userId,
                 // quantity: quantity
-            })
+            }).populate('productId')
             await newCartItem.save()
             res.send({status:true,newCartItem}).status(200)
         }
@@ -24,17 +24,29 @@ const AddToCart = async(req,res)=>{
 }
 
 const GetCart= async(req,res) =>{
-    const {id} = req.body;
-    
+  
     try {
          let items = await CartModel.find()
-         let pro = await ProductModel.findById({_id:id})
-         console.log(pro);
-         console.log(items);
+       
     res.send({status:true,cart:items})
     } catch (error) {
         res.send({message:"Cart is empty"})
     }
+}
+
+async function getCartItems(req, res) {
+    const {userid:userId} = req.headers
+    console.log('userId: ', userId);
+
+    try {
+    const carts = await CartModel.find(userId).populate('productId').select('userId');
+    console.log(carts);
+    // return res.status(200).send({ carts });
+        
+    } catch (error) {
+        // return res.status(404).send({ message: error.message });
+    }
+        
 }
 
 const DeleteCart = async(req,res) =>{
@@ -50,5 +62,6 @@ const DeleteCart = async(req,res) =>{
 module.exports = {
     AddToCart,
     GetCart,
-    DeleteCart
+    DeleteCart,
+    getCartItems
 }
