@@ -71,9 +71,22 @@ const GetAllProduct = asyncHandler(async(req,res) =>{
     }
 })
 
+const GetSingleProduct = asyncHandler(async(req,res) =>{
+    
+    try {
+        let singleProduct = await ProductModel.findById(req.params.id);
+        res.status(200).send(singleProduct)
+
+    } catch (error) {
+        throw new Error(error)
+    }
+
+})
+
 module.exports = {
     AddProduct,
     DeleteProduct,
     UpdateProduct,
-    GetAllProduct
+    GetAllProduct,
+    GetSingleProduct
 }
