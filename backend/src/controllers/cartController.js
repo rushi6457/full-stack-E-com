@@ -4,14 +4,14 @@ const asyncHandler = require('express-async-handler')
 const AddToCart = asyncHandler(async(req,res) =>{
     
     try {
-        const {userId, productId, quantity } = req.body;
+        const {userId, productId } = req.body;
     
         const isProductExist = await CartModel.findOne({ productId, userId });
         if (isProductExist) {
             return res.status(404).send({ message: 'Product already exists in cart' });
         }
        
-        const cart = await CartModel.create({ userId,productId, quantity });
+        const cart = await CartModel.create({ userId,productId });
         
           const newCartItem = await CartModel.findById(cart._id).populate('productId').populate('userId',"-password");
           await newCartItem.save()
