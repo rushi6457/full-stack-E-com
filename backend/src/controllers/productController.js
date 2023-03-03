@@ -52,7 +52,7 @@ const UpdateProduct = asyncHandler(async(req,res) =>{
 const GetAllProduct = asyncHandler(async(req,res) =>{
     
     let page = Number(req.query.page) || 1;
-    let limit = Number(req.query.limit)|| 5
+    let limit = Number(req.query.limit)
     let skip = (page-1) * limit
     let sort = req.query.sort 
     if(sort === 'asc'){
