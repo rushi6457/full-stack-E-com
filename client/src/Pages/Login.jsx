@@ -2,7 +2,7 @@ import { Box, Button, Center, Flex, FormControl, Heading, Input, Spinner, Text, 
 import React, { useEffect, useState } from 'react';
 import styles from "../Styles/Login.module.css";
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ImFacebook } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/auth/actions';
@@ -38,8 +38,21 @@ const Login = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         dispatch(login(user))
-       navigate("/cart")
+  
     }
+
+    useEffect(()=>{
+    
+        if(store.token){
+            console.log(store.token.role);
+            if(store.token.role === 'user'){
+                navigate("/cart")
+            }
+            else if(store.token.role === 'admin'){
+                navigate("/admin")
+            }
+        }
+    },[])
 
 useEffect(()=>{
     if(store.isAuth === true && store.token.role === "User"){

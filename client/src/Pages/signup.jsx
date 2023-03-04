@@ -31,7 +31,7 @@ const Signup = () => {
     const handleSubmit = (e) =>{
         e.preventDefault()
         dispatch(signup(user))
-        navigate("/login")
+        // navigate("/login")
     }
      const toastOptions = {
            position:'bottom-left',

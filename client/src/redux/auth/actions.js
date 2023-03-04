@@ -5,7 +5,7 @@ export const login = (creds) => async(dispatch) =>{
 
     dispatch({type:LOGIN_REQUEST})
     try {
-        let res = await axios.post(`http://localhost:5000/login`,creds)
+        let res = await axios.post(`https://e-com-78xd.onrender.com/user/login`,creds)
         console.log(res.data);
         dispatch({type:LOGIN_SUCCESS,payload:res.data})
     } catch (error) {
@@ -18,7 +18,7 @@ export const signup = (creds) => async(dispatch) =>{
 
     dispatch({type:SIGNUP_REQUEST})
     try {
-        let res = await axios.post(`http://localhost:5000/signup`,creds)
+        let res = await axios.post(`https://e-com-78xd.onrender.com/user/signup`,creds)
         console.log(res);
         dispatch({type:SIGNUP_SUCCESS,payload:res.data})
     } catch (error) {

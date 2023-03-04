@@ -1,14 +1,15 @@
-import { Box, Button, Flex, HStack, Image, ListItem, UnorderedList } from '@chakra-ui/react';
+import { Avatar, Box, Button, Flex, HStack, Image, ListItem, UnorderedList } from '@chakra-ui/react';
 import React from 'react';
 import {AiOutlineShoppingCart} from "react-icons/ai";
 import styles from "../Styles/Navbar.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/auth/actions';
+import logo from "../asset/logo.png";
 
 const Navbar = () => {
-       const store = useSelector(store=>store.login)
- 
+    const store = useSelector(store=>store.login)
+    console.log(store);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -24,12 +25,11 @@ const Navbar = () => {
         <Flex
             justifyContent={'space-between'}
             align={'center'}
-            border={'1px solid'}
             width={'100%'}
             className={styles.navbar}
         >
             <Link to={'/'}>
-                <Image src='' alt='Logo'></Image>
+                <Image w='120px' height={'80px'} src={logo} alt='Logo'></Image>
             </Link>
             <HStack>
                 <UnorderedList>
@@ -54,16 +54,18 @@ const Navbar = () => {
                         />
                     </Flex>
                     <Link to='/login'>
+                     {store.isAuth ? <Avatar onClick={handleLogout} name={store.token.name} src='https://bit.ly/broken-link' /> :
                         <Button 
-                            onClick={handleLogout}
                             fontSize={'1.3rem'}
                             fontWeight={'200'}
                             variant={'outline'} 
                             colorScheme='red'>
-                            {store.isAuth ? "Logout" : "Login"}</Button>
+                           Login</Button>
+                    }   
                     </Link>
                     <Link to={'/signup'}>
                         <Button 
+                            display={store.isAuth ? 'none' : 'initial'}
                             fontSize={'1.3rem'}
                             fontWeight={'200'}
                             variant={'solid'} 
