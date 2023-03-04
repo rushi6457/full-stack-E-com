@@ -80,10 +80,16 @@ const getAllUsers = asyncHandler(async(req,res) =>{
     }
 })
 
+const getProductsWithUsers = asyncHandler(async(req,res) =>{
+    const users = await UserModel.find().populate("cartProducts").select("-password")
+    res.send(users)
+})
+
 
 
 module.exports = {
     Signup,
     Login,
-    getAllUsers
+    getAllUsers,
+    getProductsWithUsers
 }

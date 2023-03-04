@@ -16,7 +16,7 @@ const Admin = () => {
             <Link to='/addproducts'>
                 <Button>Add products</Button>
             </Link>
-            <Link>
+            <Link to='/users'>
                 <Button>Check users</Button>
             </Link>
            </Flex>

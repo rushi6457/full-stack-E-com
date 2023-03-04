@@ -43,11 +43,10 @@ const Login = () => {
     useEffect(()=>{
     
         // if(store.token){
-            console.log(store.token.role);
-            if(store.token.role === 'user'){
+            if(store?.token?.role === 'user'){
                 navigate("/cart")
             }
-            else if(store.token.role === 'admin'){
+            else if(store?.token?.role === 'admin'){
                 navigate("/admin")
             }
         // }
