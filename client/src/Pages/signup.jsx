@@ -18,7 +18,6 @@ const Signup = () => {
     })
     const navigate = useNavigate()
     const store = useSelector(store =>store.signup)
-    console.log(store);
     const dispatch = useDispatch()
 
     const handleChange = (e) =>{

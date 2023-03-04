@@ -21,7 +21,6 @@ const Cart = () => {
    },[])
 
 const changeQuantityIncrease = (id,e) =>{
-    console.log(count);
 
     data.map((el)=>{
         if(el._id === id){
@@ -38,7 +37,6 @@ const changeQuantityDecrease = (id) =>{
        
     })
 }
-    console.log(data);
 
     return (
     <TableContainer width={'90%'}margin={'auto'} mt='8'>

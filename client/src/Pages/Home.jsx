@@ -21,7 +21,6 @@ const Home = () => {
 
   const getData = async() =>{
       let res = await axios.get(`https://e-com-78xd.onrender.com/admin/allproducts`)
-      console.log(res.data.data);
     return res.data.data
   }
 

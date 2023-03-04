@@ -7,7 +7,6 @@ const Payment = () => {
     const ref = useParams()
     const [data,setData] = useState([])
     const [count,setCount] = useState(1);
-    console.log(ref);    
     const getProduct = async() =>{
         let res = await axios.get(`https://e-com-78xd.onrender.com/cart/getcart/${ref.id}`)
        
@@ -19,7 +18,6 @@ const Payment = () => {
         getProduct()
         .then((res)=>setData(res.data))    
     },[])
-    console.log(data);
     return (
         <div>
             <Flex justifyContent={'space-around'}>

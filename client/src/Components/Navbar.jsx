@@ -9,7 +9,6 @@ import logo from "../asset/logo.png";
 
 const Navbar = () => {
     const store = useSelector(store=>store.login)
-    console.log(store);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

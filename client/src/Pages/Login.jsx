@@ -16,7 +16,6 @@ const Login = () => {
         password:""
     })
     const store = useSelector(store=>store.login)
-    console.log(store);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const toastOptions = {
@@ -43,7 +42,7 @@ const Login = () => {
 
     useEffect(()=>{
     
-        if(store.token){
+        // if(store.token){
             console.log(store.token.role);
             if(store.token.role === 'user'){
                 navigate("/cart")
@@ -51,7 +50,7 @@ const Login = () => {
             else if(store.token.role === 'admin'){
                 navigate("/admin")
             }
-        }
+        // }
     },[])
 
 useEffect(()=>{
