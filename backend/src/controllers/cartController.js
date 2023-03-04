@@ -47,9 +47,17 @@ const UpdateCart = asyncHandler(async(req,res) =>{
     }
 })
 
+const GetCartItem = asyncHandler(async(req,res) =>{
+    const {id} = req.params
+    const data = await CartModel.findOne({_id:id}).populate('productId').populate('userId',"-password")
+    
+    res.status(200).send(data)
+})
+
 module.exports = {
     AddToCart,
     CartData,
     DeleteCart,
-    UpdateCart
+    UpdateCart,
+    GetCartItem
 }
