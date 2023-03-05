@@ -27,6 +27,13 @@ const CartData = asyncHandler(async(req,res) =>{
     res.status(200).send(data)
 })
 
+const CartDatanew = asyncHandler(async(req,res) =>{
+    let data = await CartModel.aggregate([{$group:{_id:{email:"$email"}}}]).find()
+    .populate('productId').populate('userId',"-password");
+    // let datanew = await CartModel.aggregate([{$match:{userId:"$userId"}}]).populate('productId').populate('userId','-password');
+    res.status(200).send(data)
+})
+
 const DeleteCart = asyncHandler(async(req,res) =>{
     const {id} = req.params;
     let deleteCartItem = await CartModel.findByIdAndDelete({_id:id})
@@ -59,5 +66,6 @@ module.exports = {
     CartData,
     DeleteCart,
     UpdateCart,
-    GetCartItem
+    GetCartItem,
+    CartDatanew
 }

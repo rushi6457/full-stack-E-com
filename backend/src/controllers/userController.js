@@ -79,9 +79,21 @@ const getAllUsers = asyncHandler(async(req,res) =>{
         throw new Error("Something went wrong")
     }
 })
+const GetSingleUser = asyncHandler(async(req,res) =>{
+
+    try {
+        let singleUser = await UserModel.findById(req.body).populate("cartId");
+        res.status(200).send(singleUser)
+
+    } catch (error) {
+        console.log(error);
+    }
+
+})
 
 const getProductsWithUsers = asyncHandler(async(req,res) =>{
-    const users = await UserModel.find().populate("cartProducts").select("-password")
+    const users = await UserModel.find().populate("cartId")
+    console.log(users)
     res.send(users)
 })
 
@@ -91,5 +103,6 @@ module.exports = {
     Signup,
     Login,
     getAllUsers,
-    getProductsWithUsers
+    getProductsWithUsers,
+    GetSingleUser
 }
