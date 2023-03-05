@@ -6,19 +6,29 @@ import {ArrowLeftIcon,ArrowRightIcon} from "@chakra-ui/icons";
 
 const AdminUsers = () => {
     const [data, setData] = useState([]);
-   
+   const [users,setUsers] = useState([])
+   let a = []
     useEffect(()=>{
         axios.get(`https://e-com-78xd.onrender.com/cart/cartdata`)
         .then((res) =>setData(res.data))
     },[])
+
+   
 //     let a = data.map((el)=>el.userId)
 //    users.push(a)
 //    let b = data.map((el)=>el.productId)
 //    products.push(b)
 //    console.log(b);
    const uniqueNames = [...new Set(data.map(item =>item.userId.email))];
-
-  
+    console.log(uniqueNames)
+   useEffect(()=>{
+    // uniqueNames.map((el)=>{
+        // axios.get(`http://localhost:5000/user/singleuser/${uniqueNames}`)
+        // .then((res) =>console.log(res))
+    // })
+    
+    },[])
+    // console.log(users)
    /*
 return (
             setUsers({
@@ -34,8 +44,8 @@ return (
 
    
     return (
-        <>
-         <Flex justifyContent={'space-between'} margin={'20px'}>
+        <div>
+         <Flex justifyContent={'space-between'} margin={'20px'} >
                 <Link to='/admin'>
                 <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowLeftIcon/></Button>
                 </Link>
@@ -67,7 +77,7 @@ return (
                 })
             }
 </SimpleGrid>
-</>
+</div>
     );
 }
 

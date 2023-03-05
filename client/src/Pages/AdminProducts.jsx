@@ -6,7 +6,7 @@ import { Box, Button,  Modal,
   ModalBody,
   ModalCloseButton,
   Input,
-  useDisclosure, Flex, Grid, GridItem, Image, Text, useToast } from '@chakra-ui/react';
+  useDisclosure, Flex, Grid, GridItem, Image, Text, useToast, Heading } from '@chakra-ui/react';
   import {ArrowLeftIcon,ArrowRightIcon} from "@chakra-ui/icons";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -64,10 +64,12 @@ const AdminProducts = () => {
                 <Link to='/admin'>
                 <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowLeftIcon/></Button>
                 </Link>
+                 <Heading>All Products</Heading>
                 <Link to='/products'>
                 {/* <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowRightIcon/></Button> */}
                 </Link>
             </Flex>
+           
            <Grid gridTemplateColumns={'repeat(4,1fr)'} gap={'20px'} w='95%' margin='auto' paddingTop={'50px'}>
             {
             data?.map((el)=>{

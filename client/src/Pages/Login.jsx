@@ -16,6 +16,7 @@ const Login = () => {
         password:""
     })
     const store = useSelector(store=>store.login)
+    console.log(store);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const toastOptions = {
@@ -37,26 +38,21 @@ const Login = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         dispatch(login(user))
-  
+        
     }
 
     useEffect(()=>{
     
         // if(store.token){
-            if(store?.token?.role === 'user'){
-                navigate("/cart")
-            }
-            else if(store?.token?.role === 'admin'){
-                navigate("/admin")
-            }
+          
         // }
     },[])
 
 useEffect(()=>{
-    if(store.isAuth === true && store.token.role === "User"){
-        navigate("/cart")
+    if(store.isAuth === true && store.token.role === "user"){
+        navigate("/")
     }
-    else if(store.isAuth === true && store.token.role === "Admin"){
+    else if(store.isAuth === true && store.token.role === "admin"){
         navigate("/admin")
     }
 },[store.isAuth])

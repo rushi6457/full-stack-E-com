@@ -5,6 +5,7 @@ const theme = extendTheme({
     // heading: `'Open Sans', sans-serif`,
     heading: `'Roboto',roboto mono`,
     body: `'Raleway', sans-serif`,
+    
   },
 })
 

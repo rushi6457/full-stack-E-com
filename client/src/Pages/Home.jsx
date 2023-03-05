@@ -30,7 +30,7 @@ const Home = () => {
   },[])
   console.log(data);
     return (
-    <div>
+    <div style={{backgroundColor:'#063970',color:'white'}}>
         <Swiper
         spaceBetween={30}
         centeredSlides={true}
