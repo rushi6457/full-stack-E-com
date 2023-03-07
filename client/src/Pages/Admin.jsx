@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js/auto';
+import styles from "../Styles/Admin.module.css"
 const Admin = () => {
     const [product,setProduct] = useState([])
     const [userName,setUserName] = useState([])
@@ -63,7 +64,7 @@ const data = {
 };
     return (
         <div>
-           <Flex justifyContent={'space-between'}margin={'20px'} alignItems={'center'}>
+           <Flex justifyContent={'space-between'} margin={'10px'} alignItems={'center'}>
             <Link to='/addproducts'>
                 <Button colorScheme='linkedin' variant={'outline'}>Add products</Button>
             </Link>
@@ -73,7 +74,7 @@ const data = {
             </Link>
            </Flex>
 
-        <Flex align={'center'} justifyContent={'space-between'} width='100%' margin={'auto'}>
+        <Flex align={'center'} justifyContent={'space-between'} width='100%' margin={'auto'} className={styles.admin}>
             <Container marginRight={'50px'}>
            <TableContainer>
             <Table variant='simple' size={'sm'}>

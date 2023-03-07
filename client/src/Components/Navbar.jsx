@@ -39,7 +39,7 @@ const Navbar = () => {
                         gap='2rem'
                     >   
                     <Flex 
-                        display={store.token.role === 'user' ? 'initial' : 'none'}
+                        display={store.token?.role === 'user' ? 'initial' : 'none'}
                         align={'center'}
                         gap='10px'
                     >   

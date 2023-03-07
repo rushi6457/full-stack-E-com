@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading, Image, Text, VStack } from '@chakra-ui/reac
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import styles from "../Styles/Payment.module.css"
 const Payment = () => {
     const ref = useParams()
     const [data,setData] = useState([])
@@ -20,11 +20,12 @@ const Payment = () => {
     },[])
     return (
         <div>
-            <Flex justifyContent={'space-around'}>
+            <Flex justifyContent={'space-between'} className={styles.payment}>
                 <VStack 
+                    className={styles.firstchild}
                     boxShadow= 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
                     borderRadius={'1rem'}
-                    width='30%'
+                    // width='30%'
                     margin={'2%'} 
                     padding={'1%'} 
                     textAlign={'justify'}>
@@ -41,8 +42,9 @@ const Payment = () => {
                     </Flex>
                 </VStack>
                 <VStack 
+                 className={styles.secondchild}
                     boxShadow='#161515 -5px 5px, #161515 -10px 10px, #161515 -15px 15px, #161515 -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px'
-                    width='30%'
+                    // width='30%'
                     padding='2%'
                     bgColor={'gray.500'}
                     borderRadius={'4%'}

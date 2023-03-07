@@ -3,11 +3,11 @@ import  { Autoplay, Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import styles from "../Styles/Home.module.css";
 import 'swiper/css';
 import '../Styles/styles.css';
 import { Box, Button, Flex, Grid, GridItem, HStack, Heading, Image, Text } from '@chakra-ui/react';
 import axios from 'axios';
-import styles from "../Styles/Home.module.css";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -28,7 +28,6 @@ const Home = () => {
     getData()
     .then((res)=>setData(res))
   },[])
-  console.log(data);
     return (
     <div style={{backgroundColor:'#063970',color:'white'}}>
         <Swiper
@@ -61,10 +60,8 @@ const Home = () => {
 
         <Heading textAlign={'justify'} padding={'1.5rem'}>Trending products</Heading>
         <Grid 
-            width='95%'
-            margin='auto'
-            templateColumns={'repeat(4,1fr)'}
-            gap={'30'}>
+            className={styles.products}
+            >
             <GridItem  
                borderRadius={'1rem'}
                boxShadow='rgba(0, 0, 0, 0.16) 0px 1px 4px'
@@ -87,11 +84,9 @@ const Home = () => {
         
         <Heading textAlign={'justify'} padding={'1.5rem'}>Products</Heading>
         <Grid
-          gridTemplateColumns={'repeat(4,1fr)'}
-          w='90%'
-          margin={'auto'}
-          gap={'3rem'}
+          className={styles.products}
           textAlign={'justify'}
+        
         >
           {data?.map((el)=>{
             return (

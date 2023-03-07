@@ -52,6 +52,7 @@ const SingleProduct = () => {
                 padding={'10px'}
                 w='90%'
                 textAlign={'justify'}
+                className={styles.flex}
             >
                 <Image 
                     borderRadius={'10px'}

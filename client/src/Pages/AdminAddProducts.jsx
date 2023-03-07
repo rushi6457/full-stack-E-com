@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../redux/product/productActions';
 import {ArrowLeftIcon,ArrowRightIcon} from "@chakra-ui/icons";
 import { Link } from 'react-router-dom';
-
+import styles from "../Styles/ProductAdd.module.css"
 const AdminAddProducts = () => {
 
     const [product,setProduct] = useState({
@@ -59,7 +59,7 @@ const AdminAddProducts = () => {
                 <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowRightIcon/></Button>
                 </Link>
             </Flex>
-            <AbsoluteCenter axis='both' bgColor='white' w='40%'margin={'auto'} padding={'1%'} boxShadow='rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'borderRadius={'1rem'}>
+            <AbsoluteCenter className={styles.form} axis='both' bgColor='white'  padding={'1%'} boxShadow='rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'borderRadius={'1rem'}>
                 <Container>
                     <Text fontSize={'2rem'}>Product Form</Text>
                     <form onSubmit={handleSubmit}>

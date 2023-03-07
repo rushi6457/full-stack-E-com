@@ -8,3 +8,8 @@
     background-color: black;
 
 }
+@media screen and (max-width:750px) and (min-width:250px) {
+    .login{
+        width: 90vw;
+    }
+}

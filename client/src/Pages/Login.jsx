@@ -41,21 +41,17 @@ const Login = () => {
         
     }
 
-    useEffect(()=>{
-    
-        // if(store.token){
-          
-        // }
-    },[])
-
 useEffect(()=>{
-    if(store.isAuth === true && store.token.role === "user"){
-        navigate("/")
+    if(store.token !== null && store.token.role){
+        if(store.isAuth === true && store.token.role === "user"){
+            navigate("/")
+        }
+        else if(store.isAuth === true && store.token.role === "admin"){
+            navigate("/admin")
+        }
     }
-    else if(store.isAuth === true && store.token.role === "admin"){
-        navigate("/admin")
-    }
-},[store.isAuth])
+  
+},[store.isAuth,navigate])
    
     if(store.isLoading){
         return (

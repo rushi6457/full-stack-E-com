@@ -1,0 +1,30 @@
+.form{
+    width: 50vw;
+}
+.proGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2%;
+    width: 90vw;
+    margin: auto;
+}
+@media screen and (max-width:850px) and (min-width:150px){
+    .form{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width:750px) and (min-width:451px) {
+  
+    .proGrid{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media screen and (max-width:450px) and (min-width:250px) {
+   
+    .proGrid{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}

@@ -1,0 +1,10 @@
+
+@media screen and (max-width:750px) and (min-width:250px) {
+    .admin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 50px;
+    }    
+}

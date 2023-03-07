@@ -9,3 +9,8 @@
     background-color: black;
     color: white;
 }
+@media screen and (max-width:750px) and (min-width:250px) {
+    .signup{
+        width: 90vw;
+    }
+}

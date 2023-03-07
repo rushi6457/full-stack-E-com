@@ -13,7 +13,7 @@ import React, { useEffect, useState } from 'react';
 import Edit from '../Components/Edit';
 import Pagination from '../Components/Pagination';
 import { Link } from 'react-router-dom';
-
+import styles from "../Styles/ProductAdd.module.css"
 const AdminProducts = () => {
     const [data, setData] = useState([]);
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -70,7 +70,7 @@ const AdminProducts = () => {
                 </Link>
             </Flex>
            
-           <Grid gridTemplateColumns={'repeat(4,1fr)'} gap={'20px'} w='95%' margin='auto' paddingTop={'50px'}>
+           <Grid className={styles.proGrid} paddingTop={'50px'}>
             {
             data?.map((el)=>{
                 return (

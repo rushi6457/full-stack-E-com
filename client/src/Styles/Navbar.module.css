@@ -6,4 +6,10 @@
     box-shadow: rgba(248, 246, 246, 0.45) 0px 25px 20px -20px;
     background-color: #063970;
     color: white;
+    width: 100%;
+}
+@media screen and (max-width:750px) and (min-width:0px) {
+    .navbar{
+        width: 100%;
+    }
 }

@@ -1,0 +1,24 @@
+  .payment{
+    display: flex;
+   justify-content: space-between;
+}
+  .firstchild{
+        width: 30%;
+}
+.secondchild{
+    width: 30%;
+}
+ 
+ @media screen and (max-width:750px) and (min-width:250px) {
+    .payment{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    }
+    .firstchild{
+        width: 100%;
+    }
+    .secondchild{
+    width: 100%;
+}
+ }
