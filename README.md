@@ -81,6 +81,9 @@
 ## Payment page
 ![Screenshot (271)](https://user-images.githubusercontent.com/103261302/223352854-2200da4f-8298-4e56-b51d-818c56f7857f.png)
 
+## Final payment
+![Screenshot (294)](https://user-images.githubusercontent.com/103261302/224130492-e0ba2ac3-4aa1-4e6b-9a95-b8ce0b0131f5.png)
+
 ## Admin Dashboard
 ![Screenshot (277)](https://user-images.githubusercontent.com/103261302/223353257-01eb4948-2657-46c8-956c-0528f10a6f73.png)
 
