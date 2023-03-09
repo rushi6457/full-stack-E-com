@@ -17,7 +17,6 @@ const AdminAddProducts = () => {
     const dispatch = useDispatch()
     const toast = useToast()
     const store= useSelector(store=>store.product)
-    console.log(store);
     const handleChange = (e) =>{
         const {name,value} = e.target;
         setProduct({
@@ -34,6 +33,7 @@ const AdminAddProducts = () => {
           duration: 5000,
           isClosable: true,
         })
+        setProduct('')
     }
 
     if(store.isAddLoading){

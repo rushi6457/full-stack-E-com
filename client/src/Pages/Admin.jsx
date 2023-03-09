@@ -26,21 +26,8 @@ const Admin = () => {
         .then((res) =>setDataa(res.data))
     },[])
     
-    // data.map((el)=>{
-    //     setUserEmail(el.userId.email)
-    // })
-        console.log(dataa);
-
-    useEffect(()=>{
-        // axios.get(`https://e-com-78xd.onrender.com/admin/allproducts`)
-        // .then((res) =>console.log(res.data))
-    },[])
-
     const uniqueNames = [...new Set(dataa.map(item =>item.userId._id))];
     const unique = [...new Set(dataa.map(item =>item.productId._id))];
-    console.log(unique.length)
-    //  const uniqueNames = [...new Set(data.map(item =>item.productId.title))];
-    //  console.log(uniqueNames);
 
 const data = {
   labels: ['Unique Users','Unique Products'],

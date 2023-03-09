@@ -11,3 +11,12 @@ export const addProduct = (data) => async(dispatch) =>{
         dispatch({type:PRODUCT_ADD_FAIL})
     }
 }
+
+export const editProduct = (data,id) =>async(dispatch) =>{
+    try{
+
+    }
+    catch(err){
+        
+    }
+}

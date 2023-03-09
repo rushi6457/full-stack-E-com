@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
    const store = useSelector(store=>store.login)
-    console.log(store);
     const [data,setData] = useState([])
     const [count,setCount] = useState(1)
 
@@ -45,7 +44,6 @@ const changeQuantityDecrease = (id) =>{
       <Tr>
         <Th fontSize={'1.1rem'} textColor={'white'}>Image</Th>
         <Th fontSize={'1.1rem'} textColor={'white'}>Title</Th>
-        {/* <Th>Quantity</Th> */}
         <Th fontSize={'1.1rem'} textColor={'white'} isNumeric>Price</Th>
         <Th fontSize={'1.1rem'} textColor={'white'} isNumeric>Proceed To Payment</Th>
       </Tr>

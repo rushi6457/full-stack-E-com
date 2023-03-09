@@ -13,12 +13,6 @@ const AdminUsers = () => {
         .then((res) =>setData(res.data))
     },[])
 
-   
-//     let a = data.map((el)=>el.userId)
-//    users.push(a)
-//    let b = data.map((el)=>el.productId)
-//    products.push(b)
-//    console.log(b);
    const uniqueNames = [...new Set(data.map(item =>item.userId.email))];
     console.log(uniqueNames)
    useEffect(()=>{
@@ -28,21 +22,7 @@ const AdminUsers = () => {
     // })
     
     },[])
-    // console.log(users)
-   /*
-return (
-            setUsers({
-            ...item,
-             email:item.userId.email,
-             name: item.userId.name,
-             role: item.userId.role
-        })
-        )
-
-   */
-    // console.log(users); 
-
-   
+ 
     return (
         <div>
          <Flex justifyContent={'space-between'} margin={'20px'} >
@@ -50,7 +30,6 @@ return (
                 <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowLeftIcon/></Button>
                 </Link>
                 <Link to='/products'>
-                {/* <Button  padding={'20px'} colorScheme='red'  alignSelf={'initial'} variant={'solid'}><ArrowRightIcon/></Button> */}
                 </Link>
             </Flex>
         <Heading fontFamily={'cursive'} paddingTop={'30px'}>All Users</Heading>
