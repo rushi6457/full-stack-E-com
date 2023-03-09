@@ -2,11 +2,11 @@ import { Button, Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 const Pagination = ({current, total, onChange,data}) => {
-    const previous = <Button isDisabled={current===1} variant={'outline'} colorScheme={'blue'} onClick={() => onChange(current - 1)}>PREV</Button>;
+    const previous = <Button isDisabled={current===1} variant={'outline'} colorScheme={'black'} onClick={() => onChange(current - 1)}>PREV</Button>;
   const currentPage = (
-    <Button variant={'outline'} colorScheme={'blue'} onClick={() => onChange(current)}>{current}</Button>
+    <Button variant={'outline'} colorScheme={'black'} onClick={() => onChange(current)}>{current}</Button>
   );
-  const next = <Button variant={'outline'} colorScheme={'blue'} onClick={() => onChange(current + 1)}>NEXT</Button>;
+  const next = <Button variant={'outline'} colorScheme={'black'} onClick={() => onChange(current + 1)}>NEXT</Button>;
     return (
         <div>
             <Center gap='4' margin={'10'}>

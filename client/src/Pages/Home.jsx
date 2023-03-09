@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import  { Autoplay, Pagination, Navigation } from 'swiper';
+import  { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -9,27 +9,30 @@ import '../Styles/styles.css';
 import { Box, Button, Flex, Grid, GridItem, HStack, Heading, Image, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Pagination from '../Components/Pagination';
 
 const Home = () => {
   const [data,setData] = useState([])
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
+   const [page,setPage] = useState(1)
+    let limit = 8
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty('--progress', 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
   const getData = async() =>{
-      let res = await axios.get(`https://e-com-78xd.onrender.com/admin/allproducts`)
+      let res = await axios.get(`https://e-com-78xd.onrender.com/admin/allproducts?page=${page}&limit=${limit}`)
     return res.data.data
   }
 
   useEffect(()=>{
     getData()
     .then((res)=>setData(res))
-  },[])
+  },[data,page])
     return (
-    <div style={{backgroundColor:'#063970',color:'white'}}>
+    <div >
         <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -110,7 +113,7 @@ const Home = () => {
             )
           })}
         </Grid>
-       
+         <Pagination data={data} onChange={(page) => setPage(page)} current={page} />  
     </div>
     );
 }

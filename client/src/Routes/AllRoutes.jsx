@@ -11,6 +11,7 @@ import Payment from '../Pages/Payment';
 import AdminProducts from '../Pages/AdminProducts';
 import AdminUsers from '../Pages/AdminUsers';
 import AdminAddProducts from '../Pages/AdminAddProducts';
+import Final from '../Pages/Final';
 
 const AllRoutes = () => {
     return (
@@ -25,7 +26,7 @@ const AllRoutes = () => {
             <Route path='/products' element={<AdminProducts/>}></Route>
             <Route path='/users' element={<AdminUsers/>}></Route>
             <Route path='/addproducts' element={<AdminAddProducts/>}></Route>
-            {/* <Route path='/admin/' element={}></Route> */}
+            <Route path='/final' element={<Final/>}></Route>
         </Routes>
     );
 }

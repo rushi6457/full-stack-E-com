@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from "../Styles/Payment.module.css"
 const Payment = () => {
     const ref = useParams()
@@ -18,6 +18,11 @@ const Payment = () => {
         getProduct()
         .then((res)=>setData(res.data))    
     },[])
+    // console.log(data);
+
+    const handleProceed = () =>{
+        localStorage.setItem('info',JSON.stringify([data,count]))
+    }
     return (
         <div>
             <Flex justifyContent={'space-between'} className={styles.payment}>
@@ -86,6 +91,9 @@ const Payment = () => {
                         fontWeight={'800'}><Text>Total Price</Text>
                         <Text>{count * data?.productId?.price}</Text>
                     </Box>
+                    <Link to='/final'>
+                    <Button onClick={handleProceed}>Proceed to payment</Button>
+                    </Link>
                 </VStack>
             </Flex>
         </div>

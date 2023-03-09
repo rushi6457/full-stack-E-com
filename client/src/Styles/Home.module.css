@@ -42,6 +42,7 @@
   grid-template-columns: repeat(4,1fr);
   width: 95%;
   margin: auto;
+  gap: 2rem;
 }
 @media screen and (max-width:750px) and (min-width:350px){
  .products{
