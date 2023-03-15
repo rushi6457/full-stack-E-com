@@ -3,22 +3,22 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from "../Styles/Payment.module.css"
+
 const Payment = () => {
     const ref = useParams()
     const [data,setData] = useState([])
     const [count,setCount] = useState(1);
+
     const getProduct = async() =>{
         let res = await axios.get(`https://e-com-78xd.onrender.com/cart/getcart/${ref.id}`)
        
        return res;
     }
   
-
     useEffect(()=>{
         getProduct()
         .then((res)=>setData(res.data))    
     },[])
-    // console.log(data);
 
     const handleProceed = () =>{
         localStorage.setItem('info',JSON.stringify([data,count]))
@@ -51,7 +51,8 @@ const Payment = () => {
                     boxShadow='#161515 -5px 5px, #161515 -10px 10px, #161515 -15px 15px, #161515 -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px'
                     // width='30%'
                     padding='2%'
-                    bgColor={'gray.500'}
+                    border={'1px solid gray'}
+                    // bgColor={'gray.500'}
                     borderRadius={'4%'}
                     height={'max-content'}
                     margin={'2%'} 
@@ -92,7 +93,7 @@ const Payment = () => {
                         <Text>{count * data?.productId?.price}</Text>
                     </Box>
                     <Link to='/final'>
-                    <Button w='100%' onClick={handleProceed}>Proceed to payment</Button>
+                    <Button width='100%' variant={'ghost'} bgColor={'gray.200'} onClick={handleProceed}>Proceed to payment</Button>
                     </Link>
                 </VStack>
             </Flex>
