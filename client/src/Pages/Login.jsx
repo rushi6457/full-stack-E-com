@@ -97,8 +97,8 @@ useEffect(()=>{
                     variant={'solid'}
                     colorScheme='red'
                     w='100%' >Login</Button>
-               <Button variant={'solid'}colorScheme='gray'  width={'100%'}><FcGoogle fontSize={'1.5rem'} />Login with Google</Button>
-                <Button variant={'solid'} colorScheme='facebook' width={'100%'}><ImFacebook fontSize={'1.5rem'} />Login with Facebook</Button>
+               {/* <Button variant={'solid'}colorScheme='gray'  width={'100%'}><FcGoogle fontSize={'1.5rem'} />Login with Google</Button>
+                <Button variant={'solid'} colorScheme='facebook' width={'100%'}><ImFacebook fontSize={'1.5rem'} />Login with Facebook</Button> */}
             </VStack>    
             </form>
              <ToastContainer/>

@@ -99,8 +99,8 @@ const Signup = () => {
                     colorScheme='red'
                     mt='10'
                     w='100%' >Signup</Button>
-              <Button variant={'solid'}colorScheme='gray'  width={'100%'}><FcGoogle fontSize={'1.5rem'} />Login with Google</Button>
-                <Button variant={'solid'} colorScheme='facebook' width={'100%'}><ImFacebook fontSize={'1.5rem'} />Login with Facebook</Button>
+              {/* <Button variant={'solid'}colorScheme='gray'  width={'100%'}><FcGoogle fontSize={'1.5rem'} />Login with Google</Button>
+                <Button variant={'solid'} colorScheme='facebook' width={'100%'}><ImFacebook fontSize={'1.5rem'} />Login with Facebook</Button> */}
             </VStack>    
             </form>
         <ToastContainer/>
