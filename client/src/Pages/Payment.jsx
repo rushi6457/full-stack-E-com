@@ -92,7 +92,7 @@ const Payment = () => {
                         <Text>{count * data?.productId?.price}</Text>
                     </Box>
                     <Link to='/final'>
-                    <Button onClick={handleProceed}>Proceed to payment</Button>
+                    <Button w='100%' onClick={handleProceed}>Proceed to payment</Button>
                     </Link>
                 </VStack>
             </Flex>
