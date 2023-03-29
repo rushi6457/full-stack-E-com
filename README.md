@@ -20,6 +20,7 @@
 <li>Admin and user routes</li>
 <li>Multi user application</li>
 <li>Dynamic routing</li>
+<li>Razorpay integration</li>
 </ul>
 
 ## Getting started with the project
