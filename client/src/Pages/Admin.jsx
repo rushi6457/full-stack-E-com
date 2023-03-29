@@ -26,8 +26,8 @@ const Admin = () => {
         .then((res) =>setDataa(res.data))
     },[])
     
-    const uniqueNames = [...new Set(dataa.map(item =>item.userId._id))];
-    const unique = [...new Set(dataa.map(item =>item.productId._id))];
+    const uniqueNames = [...new Set(dataa.map(item =>item?.userId?._id))];
+    const unique = [...new Set(dataa.map(item =>item?.productId?._id))];
 
 const data = {
   labels: ['Unique Users','Unique Products'],
@@ -77,10 +77,10 @@ const data = {
                 return (
                 <Tbody key={el._id}>
                 <Tr>
-                    <Td>{el.userId.email}</Td>
-                    <Td>{el.userId.name}</Td>
-                    <Td>{el.productId.title}</Td>
-                    <Td>{`₹ ${el.productId.price}`}</Td>
+                    <Td>{el.userId?.email}</Td>
+                    <Td>{el.userId?.name}</Td>
+                    <Td>{el.productId?.title}</Td>
+                    <Td>{`₹ ${el.productId?.price}`}</Td>
                 </Tr>
                
                 </Tbody>
